@@ -1,42 +1,19 @@
 package br.com.fiap.MottuBracelet.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "motos")
 public class Moto {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique = true)
-    @NotBlank
-    private String imei;
-
-    @NotBlank
-    private String chassi;
-
-    @NotBlank
     private String placa;
-
-    @ManyToOne
-    @JoinColumn(name = "patio_id")
-    private Patio patio;
-
-    @OneToOne(mappedBy = "moto", cascade = CascadeType.ALL)
-    private Dispositivo dispositivo;
-
-    public Moto() {
-    }
-
-    public Moto(Long id, String imei, String chassi, String placa, Patio patio, Dispositivo dispositivo) {
-        this.id = id;
-        this.imei = imei;
-        this.chassi = chassi;
-        this.placa = placa;
-        this.patio = patio;
-        this.dispositivo = dispositivo;
-    }
+    private String marca;
+    private String modelo;
+    private int ano;
 
     public Long getId() {
         return id;
@@ -44,22 +21,6 @@ public class Moto {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getImei() {
-        return imei;
-    }
-
-    public void setImei(String imei) {
-        this.imei = imei;
-    }
-
-    public String getChassi() {
-        return chassi;
-    }
-
-    public void setChassi(String chassi) {
-        this.chassi = chassi;
     }
 
     public String getPlaca() {
@@ -70,19 +31,27 @@ public class Moto {
         this.placa = placa;
     }
 
-    public Patio getPatio() {
-        return patio;
+    public String getMarca() {
+        return marca;
     }
 
-    public void setPatio(Patio patio) {
-        this.patio = patio;
+    public void setMarca(String marca) {
+        this.marca = marca;
     }
 
-    public Dispositivo getDispositivo() {
-        return dispositivo;
+    public String getModelo() {
+        return modelo;
     }
 
-    public void setDispositivo(Dispositivo dispositivo) {
-        this.dispositivo = dispositivo;
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
     }
 }

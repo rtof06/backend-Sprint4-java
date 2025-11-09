@@ -2,11 +2,9 @@ package br.com.fiap.MottuBracelet.repository;
 
 import br.com.fiap.MottuBracelet.model.Moto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
-import java.util.Optional;
-
+@Repository
 public interface MotoRepository extends JpaRepository<Moto, Long> {
-    Optional<Moto> findByImei(String imei);
-    Optional<Moto> findByPlaca(String placa);
-    Optional<Moto> findByChassi(String chassi);
+    // se depois quiser buscar por placa: Optional<Moto> findByPlaca(String placa);
 }
